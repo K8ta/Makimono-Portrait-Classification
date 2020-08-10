@@ -2,7 +2,8 @@
 
 ## 環境
 OS:Windows10
-Language:Python3.7
+
+Python3.7
 
 ### ライブラリ
 - tensorflow:2.1.0
@@ -18,16 +19,16 @@ Language:Python3.7
 ## 使用方法
 
 ### 準備
-学習ラベルの配置
+学習用ラベルの配置
 ```sh
 data/input/train.csv
 ```
 
-学習画像の配置
+学習用画像の配置
 ```sh
 data/input/train/
 ```
-訓練画像の配置
+テスト用画像の配置
 ```sh
 data/input/test/
 ```
