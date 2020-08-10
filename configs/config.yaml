@@ -1,0 +1,53 @@
+﻿# 共通設定
+COMMON_SETTING:
+  HEIGHT: 256
+  WIDTH: 256
+  NUMBER_CLASSES: 8
+  MEAN:
+    - 0.485 #R
+    - 0.456 #G
+    - 0.406 #B
+  STD:
+    - 0.229 #R
+    - 0.224 #G
+    - 0.225 #B
+  TRAIN_LABEL_PATH: data/input/train.csv
+  TRAIN_IMG_PATH: data/input/train/*.jpg
+  TEST_IMG_PATH: data/input/test/*.jpg
+
+# ハイパーパラメータ
+# 学習１ステップ目
+TRAINING_1ST_STEP:
+  MODEL:
+      - EfficientNet
+  BATCH_SIZE: 16
+  EPOCHS: 70
+  LEARNING_RATE: 0.001
+  PSEUDO: null
+
+# 学習２ステップ目
+TRAINING_2ND_STEP:
+  MODEL:
+      - EfficientNet
+      - ResNet152
+      - Xception
+  BATCH_SIZE: 16
+  EPOCHS: 70
+  LEARNING_RATE: 0.001
+  PSEUDO: 
+    PATH: data/output/Pseudo_Label.pickle
+    THRESHOLD: 0.85
+
+# 予測１ステップ目
+PREDICT_1ST_STEP:
+  TTA_STEP: 30
+  MODEL:
+      - models/1st_EfficientNet_*.h5
+
+# 予測２ステップ目
+PREDICT_2ND_STEP:
+  TTA_STEP: 30
+  MODEL:
+      - models/2nd_EfficientNet_*.h5
+      - models/2nd_ResNet152_*.h5
+      - models/2nd_Xception_*.h5
